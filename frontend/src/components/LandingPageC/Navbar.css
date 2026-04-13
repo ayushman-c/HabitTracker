@@ -1,0 +1,197 @@
+.navbar_main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px;
+    padding: 0px 45px;
+    border-bottom: 5px solid var(--black);
+    font-size: 18px;
+}
+
+.brand_logo {
+    display: flex;
+    box-shadow: var(--shadow);
+    transition: transform var(--motion-duration) var(--motion-ease-out), box-shadow var(--motion-duration) var(--motion-ease-out);
+}
+
+.brand_logo:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 0 var(--black);
+}
+
+.brand {
+    border: var(--border);
+    padding: 6px 12px;
+    font-weight: 800;
+    background-color: var(--secondary);
+}
+
+.logo {
+    border: var(--border);
+    padding: 6px 12px;
+    border-left: none;
+    font-weight: 800;
+    background-color: var(--primary);
+    color: var(--neutral);
+}
+
+.nav_options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    font-weight: 600;
+    color: var(--gray-text);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.home {
+    position: relative;
+    transition: transform var(--motion-duration) var(--motion-ease-out), color var(--motion-duration) var(--motion-ease-out);
+}
+
+.home:hover {
+    color: var(--black);
+        transition: transform var(--motion-duration) var(--motion-ease-out), color var(--motion-duration) var(--motion-ease-out);
+
+}
+
+.home::after {
+    content: '';
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: var(--black);
+    transition: width var(--motion-duration) var(--motion-ease-out);
+}
+
+.home:hover::after {
+    width: 100%;
+}
+
+.about {
+    position: relative;
+    transition: transform var(--motion-duration) var(--motion-ease-out), color var(--motion-duration) var(--motion-ease-out);
+}
+
+.about:hover {
+    position: relative;
+        color: var(--black);
+
+    transition: transform var(--motion-duration) var(--motion-ease-out), color var(--motion-duration) var(--motion-ease-out);
+}
+.about::after {
+    content: '';
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: var(--black);
+    transition: width var(--motion-duration) var(--motion-ease-out);
+}
+
+.about:hover::after {
+    width: 100%;
+}
+
+
+.vault {
+    position: relative;
+    transition: transform var(--motion-duration) var(--motion-ease-out), color var(--motion-duration) var(--motion-ease-out);
+}
+
+.vault:hover {
+   position: relative;
+        color: var(--black);
+
+    transition: transform var(--motion-duration) var(--motion-ease-out), color var(--motion-duration) var(--motion-ease-out);
+
+}
+
+.vault::after {
+   content: '';
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: var(--black);
+    transition: width var(--motion-duration) var(--motion-ease-out);
+}
+
+.vault:hover::after {
+    width: 100%;
+}
+
+
+
+.contact {
+    position: relative;
+    transition: transform var(--motion-duration) var(--motion-ease-out), color var(--motion-duration) var(--motion-ease-out);
+}
+
+.contact:hover {
+   position: relative;
+        color: var(--black);
+
+    transition: transform var(--motion-duration) var(--motion-ease-out), color var(--motion-duration) var(--motion-ease-out);
+
+}
+
+.contact::after {
+   content: '';
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: var(--black);
+    transition: width var(--motion-duration) var(--motion-ease-out);
+}
+
+.contact:hover::after {
+    width: 100%;
+}
+
+
+.sign_in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+}
+
+.sign_up {
+    transition: transform var(--motion-duration) var(--motion-ease-out);
+}
+
+.sign_up:hover {
+    transform: translate(-2px, -2px);
+}
+
+.login {
+    border: var(--border);
+    padding: 6px 12px;
+    font-weight: 800;
+    background-color: var(--primary);
+    color: var(--neutral);
+    box-shadow: var(--shadow);
+    transition: transform var(--motion-duration) var(--motion-ease-out), box-shadow var(--motion-duration) var(--motion-ease-out);
+}
+
+.login:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 0 var(--black);
+}   
+
+
+
