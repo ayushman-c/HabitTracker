@@ -1,11 +1,15 @@
-.navbar_main {
+.navbar_main{
+}
+
+.navbar_sub {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 75px;
+    height: 10.906vh;
     padding: 0px 45px;
     border-bottom: 5px solid var(--black);
-    font-size: 18px;
+    font-size: 1.042vw;
+    
 }
 
 .brand_logo {
@@ -42,7 +46,7 @@
     gap: 50px;
     font-weight: 600;
     color: var(--gray-text);
-    font-size: 14px;
+    font-size: .942vw;
     font-weight: 700;
 }
 
@@ -193,5 +197,82 @@
     box-shadow: 7px 7px 0 0 var(--black);
 }   
 
+@media(max-width:765px){
+    .nav_options{
+        display: none;
 
+    }
+    .navbar_sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 7.906vh;
+    padding: 0px 4.365vw;
+    border-bottom: 5px solid var(--black);
+    font-size: 2.542vw;
+    
+}
+
+.brand_logo {
+    display: flex;
+    box-shadow: var(--shadow);
+    transition: transform var(--motion-duration) var(--motion-ease-out), box-shadow var(--motion-duration) var(--motion-ease-out);
+}
+
+.brand_logo:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 0 var(--black);
+}
+
+.brand {
+    border: var(--border);
+    padding: 3px 6px;
+    font-weight: 800;
+    background-color: var(--secondary);
+}
+
+.logo {
+    border: var(--border);
+    padding: 3px 6px;
+    border-left: none;
+    font-weight: 800;
+    background-color: var(--primary);
+    color: var(--neutral);
+}
+
+
+
+    .sign_in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+}
+
+.sign_up {
+    display: none;
+    transition: transform var(--motion-duration) var(--motion-ease-out);
+}
+
+.sign_up:hover {
+    transform: translate(-2px, -2px);
+}
+
+.login {
+    border: var(--border);
+    padding: 6px 12px;
+    font-weight: 800;
+    background-color: var(--primary);
+    color: var(--neutral);
+    box-shadow: var(--shadow);
+    transition: transform var(--motion-duration) var(--motion-ease-out), box-shadow var(--motion-duration) var(--motion-ease-out);
+}
+
+.login:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 0 var(--black);
+}   
+
+}
 

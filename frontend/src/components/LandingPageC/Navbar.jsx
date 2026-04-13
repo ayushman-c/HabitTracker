@@ -5,7 +5,8 @@ import './Navbar.css'
 const Navbar = () => {
   return (
     <>
-        <div className="navbar_main">
+    <div className="navbar_main">
+        <div className="navbar_sub">
             <div className="brand_logo">
 
                 <div className="brand">HABIT TRACKER</div>
@@ -22,6 +23,7 @@ const Navbar = () => {
                 <div className="login">GET STARTED</div>
             </div>
         </div>
+    </div>
     </>
   )
 }

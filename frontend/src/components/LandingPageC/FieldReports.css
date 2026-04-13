@@ -1,0 +1,194 @@
+/* ── Font ───────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:ital,wght@0,500;0,600;1,700&display=swap");
+
+/* ── Tokens ─────────────────────────────────────────────── */
+:root {
+  --fr-blue: #1a6ef5;
+  --fr-lime: #c8f135;
+  --fr-ink: #0f0f0f;
+  --fr-white: #ffffff;
+  --fr-card-bg: #f9f9f7;
+  --fr-border: #1a1a1a;
+  --fr-border-w: 2px;
+  --fr-font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --fr-font-body: "Barlow", sans-serif;
+  --fr-gap: 18px;
+}
+
+/* ── Section ────────────────────────────────────────────── */
+.fr-section {
+  background: var(--primary);
+  padding: 56px 32px 64px;
+  box-sizing: border-box;
+  font-family: var(--fr-font-body);
+  border-top: 5px solid var(--fr-border);
+    border-bottom: 5px solid var(--fr-border);
+
+}
+
+/* ── Section heading ────────────────────────────────────── */
+.fr-heading {
+  font-family: var(--fr-font-display);
+  font-weight: 900;
+  font-size: clamp(26px, 4.5vw, 42px);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--fr-white);
+  text-align: center;
+  margin: 0 0 36px;
+  background: var(--primary);
+}
+
+/* ── Grid ───────────────────────────────────────────────── */
+.fr-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--fr-gap);
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--primary);
+
+}
+
+/* ── Card ───────────────────────────────────────────────── */
+.fr-card {
+  background: var(--fr-card-bg);
+  border: var(--fr-border-w) solid var(--fr-border);
+  padding: 24px 22px 22px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: default;
+
+  /* Entrance animation */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fr-reveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--delay, 0s);
+
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.fr-card:hover {
+  box-shadow: 6px 6px 0 var(--fr-border);
+  transform: translateY(-3px);
+}
+
+@keyframes fr-reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Stars ──────────────────────────────────────────────── */
+.fr-stars {
+  display: flex;
+  gap: 3px;
+}
+
+.fr-star {
+  width: 17px;
+  height: 17px;
+  fill: transparent;
+  stroke: #888;
+  stroke-width: 1px;
+  transition: fill 0.15s;
+}
+
+.fr-star.filled {
+  fill: #c8a800;
+  stroke: #c8a800;
+}
+
+/* ── Quote ──────────────────────────────────────────────── */
+.fr-quote {
+  font-family: var(--fr-font-body);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(13px, 1.5vw, 15px);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--fr-ink);
+  margin: 0;
+  flex: 1;
+}
+
+/* ── Footer row ─────────────────────────────────────────── */
+.fr-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+/* ── Avatar ─────────────────────────────────────────────── */
+.fr-avatar {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fr-font-display);
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  border: var(--fr-border-w) solid var(--fr-border);
+  user-select: none;
+}
+
+/* ── Author text ────────────────────────────────────────── */
+.fr-author {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fr-name {
+  font-family: var(--fr-font-display);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fr-ink);
+  line-height: 1.1;
+}
+
+.fr-role {
+  font-family: var(--fr-font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #666;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .fr-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+
+  .fr-section {
+    padding: 40px 20px 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fr-quote {
+    font-size: 13px;
+  }
+}
+
+/* ── Reduced motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .fr-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

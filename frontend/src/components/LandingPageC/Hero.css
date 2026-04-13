@@ -1,0 +1,132 @@
+.hero-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.604vw;
+}
+.hero-sub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.621vw;
+}
+
+.hero-head-box {
+    border: var(--border);
+    padding: 7px 14px;
+    font-weight: 800;
+    font-size: 0.929vw;
+    background-color: var(--secondary);
+    color: rgb(74, 74, 74);
+}
+
+.hero-head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 5.583vw;
+    font-weight: 1000;
+}
+
+.hero-head-line {
+    height: 6.508vw;
+}
+
+.hero-head-line-2 {
+    height: 6.508vw;
+    color: var(--primary);
+}
+
+.hero-desc {
+    font-size: 1.129vw;
+    width: 450px;
+    font-weight: 700;
+    color: var(--gray-text);
+    margin-top: 15px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 30px;
+    margin-top: 10px;
+    font-weight: 800;
+    font-size: 0.938vw;
+}
+
+.button-1 {
+    border: var(--border);
+    padding: 9px 18px;
+    box-shadow: var(--shadow);
+    background-color: var(--primary);
+    color: var(--neutral);
+    transition: transform var(--motion-duration) var(--motion-ease-out), box-shadow var(--motion-duration) var(--motion-ease-out);
+}
+
+.button-1:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 0 var(--black);
+}
+
+.button-2 {
+    border: var(--border);
+    padding: 9px 18px;
+    box-shadow: var(--shadow);
+    transition: transform var(--motion-duration) var(--motion-ease-out), box-shadow var(--motion-duration) var(--motion-ease-out);
+}
+
+.button-2:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 0 var(--black);
+}
+
+@media(max-width:756px){
+    .hero-main {
+        margin-top: 40px;
+    }
+
+    .hero-sub{
+        gap: 10px;
+    }
+    .hero-head-box {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .hero-head {
+        font-size: 45px;
+    }
+
+    .hero-head-line {
+        height: 50px;
+    }
+
+    .hero-head-line-2 {
+        height: 50px;
+    }
+
+    .hero-desc {
+        font-size: 16px;
+        width: 90%;
+        margin-top: 20px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .button-1 {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+
+    .button-2 {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+}
+
