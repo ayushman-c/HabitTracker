@@ -1,0 +1,21 @@
+.heading-nav-2{
+
+    font-weight: 800;
+    font-size: 18px;
+    border: var(--border);
+    padding: 7px 14px;
+    background-color: var(--secondary);
+    box-shadow: var(--shadow);
+}
+
+@media (max-width:765px){
+    .heading-nav-2{
+
+    font-weight: 800;
+    font-size: 11px;
+    border: var(--border);
+    padding: 5px 10px;
+    background-color: var(--secondary);
+    box-shadow: var(--shadow);
+}
+}
