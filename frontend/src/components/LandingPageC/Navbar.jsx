@@ -20,7 +20,9 @@ const Navbar = () => {
             </div>
             <div className="sign_in">
                 <div className="sign_up">INITIATE</div>
+                <a href="#concluding">
                 <div className="login">GET STARTED</div>
+                </a>
             </div>
         </div>
     </div>

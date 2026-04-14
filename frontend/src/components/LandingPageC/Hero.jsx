@@ -15,8 +15,12 @@ const Hero = () => {
 
             <div className="hero-desc">MODULAR HABIT OF TRACKING SYSTEM DESIGNED FOR ARCHITRCTURAL PRECISION AND ABSOLUTE DISCIPLINE.</div>
             <div className="hero-buttons">
+                <a href="#concluding">
                 <div className="button-1">INITIALIZE CORE</div>
+                </a>
+                <a href="#concluding">
                 <div className="button-2">VIEW SYSTEMS</div>
+                </a>
             </div>
         </div>
     </div>

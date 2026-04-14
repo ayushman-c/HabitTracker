@@ -30,7 +30,13 @@
     background-color: var(--primary);
     padding: 22px 44px;
     box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform var(--motion-duration) var(--motion-ease-out), box-shadow var(--motion-duration) var(--motion-ease-out);
+}
 
+.con-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 0 var(--black);
 }
 .con-desc{
     margin-top: 15px;

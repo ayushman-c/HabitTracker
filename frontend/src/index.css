@@ -3,8 +3,13 @@
   padding: 0;
   font-family: 'Inter', sans-serif;
   background-color: var(--neutral);
+  scroll-behavior: smooth;
 }
 
+a{
+  text-decoration: none;
+  color: inherit;
+}
 :root {
   --yellow: #fde047;
    --yellow-glow: #fff6a3;

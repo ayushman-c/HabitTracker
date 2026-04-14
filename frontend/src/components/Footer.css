@@ -24,6 +24,10 @@
     color: var(--gray-text);
 }
 
+.footer-nav > *{
+    cursor: pointer;
+}
+
 .footer-options {
     font-weight: 700;
     position: relative;

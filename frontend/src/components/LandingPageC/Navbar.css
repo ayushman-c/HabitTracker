@@ -47,6 +47,9 @@
     font-size: .942vw;
     font-weight: 700;
 }
+.nav_options > *{
+    cursor: pointer;
+}
 
 .home {
     position: relative;
@@ -170,6 +173,8 @@
     align-items: center;
     gap: 12px;
     font-weight: 800;
+    cursor: pointer;
+
 }
 
 .sign_up {

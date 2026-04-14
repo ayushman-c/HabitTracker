@@ -8,6 +8,7 @@ const Signin = () => {
     <>
         <Navbar2/>
         <Form/>
+        
     </>
   )
 }
