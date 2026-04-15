@@ -17,15 +17,6 @@ app.get("/", (req,res) => {
     res.send("API is running . . .")
 })
 
-// Error Handling Middleware
-app.use((err, req, res, next) => {
-  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
-  res.status(statusCode).json({
-    message: err.message,
-    stack: process.env.NODE_ENV === "production" ? null : err.stack,
-  });
-});
-
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () =>{

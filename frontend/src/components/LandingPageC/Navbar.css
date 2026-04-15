@@ -1,4 +1,5 @@
 
+
 .navbar_sub {
     display: flex;
     justify-content: space-between;
@@ -7,6 +8,11 @@
     padding: 0px 45px;
     border-bottom: 5px solid var(--black);
     font-size: 1.042vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     
 }
 
@@ -213,6 +219,11 @@
     padding: 0px 4.365vw;
     border-bottom: 5px solid var(--black);
     font-size: 2.542vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     
 }
 

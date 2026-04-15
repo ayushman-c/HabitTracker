@@ -1,0 +1,110 @@
+.count-main-box {
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: 30px 20px;
+    background-color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 311px;
+}
+
+.welcome-msg {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.welcome {
+    background-color: var(--primary);
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--neutral);
+    padding-bottom: 10px;
+}
+
+.name {
+    background-color: var(--primary);
+    padding-top: 10px;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--neutral);
+}
+
+.streak-box {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    background-color: var(--primary);
+}
+
+.streak-heading {
+    background-color: var(--primary);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--neutral);
+}
+
+.streak-count {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    background-color: var(--primary);
+}
+
+.number {
+    background-color: var(--primary);
+    font-size: 72px;
+    font-weight: 800;
+    color: var(--neutral);
+}
+
+.days {
+    background-color: var(--primary);
+    font-weight: 800;
+    color: var(--neutral);
+}
+
+.personal-record {
+    background-color: var(--primary);
+    font-weight: 700;
+    color: var(--neutral);
+    border-top: 5px solid var(--neutral);
+    padding-top: 20px;
+}
+
+@media (max-width: 765px) {
+    .count-main-box {
+        padding: 20px 16px;
+        height: auto;
+        gap: 8px;
+    }
+
+    .welcome {
+        font-size: 24px;
+        padding-bottom: 6px;
+    }
+
+    .name {
+        padding-top: 6px;
+        font-size: 18px;
+    }
+
+    .streak-heading {
+        font-size: 16px;
+    }
+
+    .streak-count {
+        gap: 8px;
+    }
+
+    .number {
+        font-size: 52px;
+    }
+
+    .personal-record {
+        padding-top: 14px;
+        font-size: 13px;
+        border-top-width: 3px;
+    }
+}

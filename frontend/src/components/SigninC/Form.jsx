@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Form.css'
 import Footer from '../Footer'
-import { SignInButton } from '@clerk/react'
+import { SignInButton } from "@clerk/clerk-react"
 
 
 const Form = () => {

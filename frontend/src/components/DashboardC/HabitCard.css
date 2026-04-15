@@ -1,0 +1,165 @@
+.habit-main-box {
+    border: var(--border);
+    padding: 35px 40px;
+    margin-left: 45px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    width: 52vw;
+}
+
+.habit-heading {
+    font-weight: 800;
+    font-size: 35px;
+    margin-bottom: 30px;
+}
+
+.habit-lists {
+    margin-top: 15px;
+    border: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 45.458vw;
+    padding: 8px 16px;
+    gap: 50px;
+    box-shadow: var(--shadow);
+    transition: all 0.2s ease;
+}
+
+.habit-lists:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 0 var(--black);
+}
+
+.habit-checkbox {
+    height: 24px;
+    width: 24px;
+    min-width: 24px;
+    border: var(--border);
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.habit-checkbox.done {
+    background-color: var(--tertiary);
+    animation: fill-animation 0.4s ease forwards;
+}
+
+@keyframes fill-animation {
+    0% {
+        transform: scale(0.8);
+        background-color: transparent;
+    }
+    100% {
+        transform: scale(1);
+        background-color: var(--tertiary);
+    }
+}
+
+.habit-checkbox.done::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--black);
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.habit-list-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.habit-list-1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.habit-title {
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.habit-title.completed {
+    color: var(--gray-text);
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.habit-sub-title {
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--gray-text);
+}
+
+.habit-streak {
+    height: 30px;
+    width: max-content;
+    padding: 0 15px;
+    border: var(--border);
+    background-color: var(--tertiary);
+    font-weight: 800;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: var(--black);
+    white-space: nowrap;
+}
+
+.habit-checkbox:active {
+    background-color: var(--secondary);
+}
+
+@media (max-width: 765px) {
+    .habit-big-box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .habit-main-box {
+        
+        width: calc(100vw - 10px);
+        margin: 0 0 20px 0;
+        padding: 20px 16px;
+        box-sizing: border-box;
+    }
+
+    .habit-heading {
+        font-size: 22px;
+        margin-bottom: 16px;
+    }
+
+    .habit-lists {
+        width: 100%;
+        gap: 12px;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+    .habit-list-main {
+        gap: 14px;
+    }
+
+    .habit-title {
+        font-size: 14px;
+    }
+
+    .habit-sub-title {
+        font-size: 11px;
+    }
+
+    .habit-streak {
+        height: 36px;
+        font-size: 11px;
+        padding: 0 10px;
+    }
+}

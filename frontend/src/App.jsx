@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { useAuth } from '@clerk/react'
+import { useAuth } from '@clerk/clerk-react'
 import LandingPage from './pages/LandingPage'
 import Signin from './pages/Signin'
 import Dashboard from './pages/Dashboard'
