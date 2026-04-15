@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2.604vw;
+    margin-top: 17.604vh;
 }
 .hero-sub {
     display: flex;
@@ -86,7 +86,6 @@
 
 @media(max-width:756px){
     .hero-main {
-        margin-top: 40px;
     }
 
     .hero-sub{
