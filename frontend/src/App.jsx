@@ -4,6 +4,7 @@ import { useAuth } from '@clerk/clerk-react'
 import LandingPage from './pages/LandingPage'
 import Signin from './pages/Signin'
 import Dashboard from './pages/Dashboard'
+import Profile from './pages/Profile'
 
 const ProtectedRoute = ({ children }) => {
   const { isLoaded, isSignedIn } = useAuth()
@@ -42,6 +43,14 @@ const App = () => {
         element={
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <Profile />
           </ProtectedRoute>
         }
       />

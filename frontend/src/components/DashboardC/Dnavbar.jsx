@@ -1,7 +1,9 @@
 import React from 'react'
 import './Dnavbar.css'
+import {useNavigate} from 'react-router-dom'
 
 const Dnavbar = () => {
+  const navigate = useNavigate();
   return (
     <>
         <div className="navbar_sub">
@@ -17,7 +19,7 @@ const Dnavbar = () => {
                 <div className="dvault">VAULT</div>
             </div>
 
-            <div className="heading-nav-2">VIEW PROFILE</div>
+            <div className="heading-nav-2" onClick={() => navigate('/profile')}>VIEW PROFILE</div>
         </div>
        
     </>
