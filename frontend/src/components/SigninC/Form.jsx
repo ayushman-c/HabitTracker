@@ -18,7 +18,6 @@ const Form = () => {
             <div className="signin-small">DISCIPLINE STARTS HERE.</div>
           </div>
 
-          {/* Email */}
           <div className="signin-form-1">
             <div className="form-1-head">EMAIL ADDRESS</div>
             <div className='form-1-box'>
@@ -31,7 +30,6 @@ const Form = () => {
             </div>
           </div>
 
-          {/* Access Key */}
           <div className="signin-form-1">
             <div className="form-1-head">ACCESS KEY</div>
             <div className='form-1-box'>
@@ -44,7 +42,6 @@ const Form = () => {
             </div>
           </div>
 
-          {/* Button */}
           <div className="sign-in-button">
             <div className="sign-in-sub">
               SIGN-IN

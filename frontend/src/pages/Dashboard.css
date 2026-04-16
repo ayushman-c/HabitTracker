@@ -5,6 +5,7 @@
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: row-reverse;
+    margin-bottom: 70px;
 }
 
 .dash-nav-streak {

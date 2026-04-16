@@ -47,6 +47,10 @@
     border: var(--border);
     box-shadow: var(--shadow);
     cursor: pointer;
+    background-image: url(../../assets/arrow.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
     transition: transform var(--motion-duration) var(--motion-ease-out), box-shadow var(--motion-duration) var(--motion-ease-out);
 }
 

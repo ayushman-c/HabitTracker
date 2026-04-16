@@ -17,7 +17,9 @@ const MainSec = ({ habits }) => {
                         <div className="progress-head">TOTAL PROGRESS</div>
                         <div className="progress-num">{progressPercent}%</div>
                     </div>
-                    <div className="add">+</div>
+                    <div className="add">
+                        <div className="gear-icon"></div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -81,19 +81,43 @@
     border: var(--border);
     height: 80px;
     width: 80px;
-    font-size: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--secondary);
     box-shadow: var(--shadow);
     cursor: pointer;
+    overflow: hidden;
     transition: transform var(--motion-duration) var(--motion-ease-out), box-shadow var(--motion-duration) var(--motion-ease-out);
+}
+
+.gear-icon {
+    height: 100%;
+    width: 100%;
+    background-image: url(../../assets/gear.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-color: var(--secondary);
+    animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .add:hover {
     transform: translate(-2px, -2px);
     box-shadow: 7px 7px 0 0 var(--black);
+}
+
+.add:hover .gear-icon {
+    animation-duration: 3s; /* Speeds up on hover */
 }
 
 @media (max-width: 765px) {
