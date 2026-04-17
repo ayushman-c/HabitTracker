@@ -101,7 +101,6 @@ export const toggleHabit = async (req, res) => {
       });
     }
 
-    // Recalculate streak and update Habit model
     const newStreak = await calculateStreak(id);
     await Habit.findByIdAndUpdate(id, { streak: newStreak });
 

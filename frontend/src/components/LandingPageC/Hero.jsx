@@ -9,7 +9,7 @@ const Hero = () => {
             <div className="hero-head-box">STATUS : UNSTOPABLE</div>
             <div className="hero-head">
                 <div className="hero-head-line">BUILD</div>
-                <div className="hero-head-line-2">UNSTOPABLE</div>
+                <div className="hero-head-line-2">UNSTOPPABLE</div>
                 <div className="hero-head-line">MOMENTUM</div>
             </div>
 
