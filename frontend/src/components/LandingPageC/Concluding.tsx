@@ -23,7 +23,7 @@ const Concluding = () => {
           className="font-extrabold text-base tracking-widest mt-14 border-[2.5px] border-[#0a0a0a]
                      text-[#F8F8F8] px-14 py-5
                      shadow-[5px_5px_0_0_#0a0a0a] cursor-pointer w-max
-                     transition-[transform,box-shadow] duration-[420ms] ease-out
+                     transition-[transform,box-shadow] duration-420 ease-out
                      hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_#0a0a0a]"
           style={{ background: '#2D5BFF' }}
         >

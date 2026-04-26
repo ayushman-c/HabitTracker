@@ -1,32 +1,14 @@
 import React from 'react'
 import { useAuth } from '@clerk/clerk-react'
+import { useHabitStore } from '../../store/useHabitStore'
 
-const API = import.meta.env.VITE_API_URL
-
-interface Habit {
-  _id: string
-  title: string
-  createdAt: string | Date
-  completedToday: boolean
-  streak: number
-  frequency?: string
-}
-
-interface HabitCardProps {
-  habits: Habit[]
-  refresh: () => void
-}
-
-const HabitCard = ({ habits, refresh }: HabitCardProps) => {
+const HabitCard = () => {
   const { getToken } = useAuth()
+  const habits = useHabitStore((state) => state.habits)
+  const toggleHabit = useHabitStore((state) => state.toggleHabit)
 
-  const toggleHabit = async (habitId: string) => {
-    const token = await getToken()
-    await fetch(`${API}/api/habits/${habitId}/toggle`, {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    refresh()
+  const handleToggle = async (habitId: string) => {
+    await toggleHabit(habitId, getToken)
   }
 
   return (
@@ -59,7 +41,7 @@ const HabitCard = ({ habits, refresh }: HabitCardProps) => {
               >
                 <div
                   className="flex justify-center items-center gap-8 cursor-pointer max-md:gap-4"
-                  onClick={() => toggleHabit(habit._id)}
+                  onClick={() => handleToggle(habit._id)}
                 >
                   <div
                     className={`h-6 w-6 min-w-[24px] border-[2.5px] border-[#0a0a0a] relative

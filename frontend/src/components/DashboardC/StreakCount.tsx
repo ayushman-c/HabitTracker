@@ -1,17 +1,10 @@
 import React from 'react'
 import { useUser } from '@clerk/clerk-react'
+import { useHabitStore } from '../../store/useHabitStore'
 
-interface StreakProps {
-  currentMomentum: number
-  personalRecord: number
-}
-
-interface StreakCountProps {
-  stats: StreakProps | null
-}
-
-const StreakCount = ({ stats }: StreakCountProps) => {
+const StreakCount = () => {
   const { user } = useUser()
+  const stats = useHabitStore((state) => state.stats)
 
   return (
     <div

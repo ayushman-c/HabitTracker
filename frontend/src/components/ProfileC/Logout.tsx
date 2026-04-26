@@ -30,9 +30,9 @@ const Logout = () => {
           <div
             className="font-extrabold border-[2.5px] border-[#0a0a0a] p-[15px_30px]
                        bg-[#fc8b8b] text-[#0a0a0a] shadow-[5px_5px_0_0_#0a0a0a] cursor-pointer
-                       transition-[transform,box-shadow,background-color] duration-[420ms] ease-out
-                       hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-[8px_8px_0_0_#0a0a0a] hover:bg-[#ff7878]
-                       max-md:w-full max-md:max-w-[200px] max-md:p-[12px_20px]"
+                       transition-[transform,box-shadow,background-color] duration-420 ease-out
+                       hover:-translate-x-0.75 hover:-translate-y-0.75 hover:shadow-[8px_8px_0_0_#0a0a0a] hover:bg-[#ff7878]
+                       max-md:w-full max-md:max-w-50 max-md:p-[12px_20px]"
             onClick={handleLogout}
           >
             LOGOUT

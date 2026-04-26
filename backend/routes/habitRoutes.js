@@ -1,5 +1,7 @@
 import express from "express";
 import { requireAuth } from "../middleware/authMiddleware.js";
+import { validate } from "../middleware/validateResource.js";
+import { createHabitSchema } from "../validations/habitValidation.js";
 import {
   createHabit,
   getHabits,
@@ -9,7 +11,7 @@ import {
 
 const router = express.Router();
 
-router.post("/", requireAuth, createHabit);
+router.post("/", requireAuth, validate(createHabitSchema), createHabit);
 router.get("/", requireAuth, getHabits);
 router.get("/stats", requireAuth, getUserStats);
 router.post("/:id/toggle", requireAuth, toggleHabit);

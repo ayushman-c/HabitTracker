@@ -66,7 +66,7 @@ function StarRating({ count }: { count: number }) {
 function ReviewCard({ review, index }: { review: Review; index: number }) {
   return (
     <article
-      className="border-[2px] border-[#1a1a1a] p-8 flex flex-col gap-5 cursor-default
+      className="border-2 border-[#1a1a1a] p-8 flex flex-col gap-5 cursor-default
                  opacity-0 translate-y-5 animate-card-reveal
                  transition-[box-shadow,transform] duration-200 ease-in
                  hover:shadow-[6px_6px_0_#1a1a1a] hover:-translate-y-1"
@@ -88,7 +88,7 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
         <div
           className="w-11 h-11 shrink-0 flex items-center justify-center
                      font-extrabold text-xs tracking-wider
-                     border-[2px] border-[#1a1a1a] select-none"
+                     border-2 border-[#1a1a1a] select-none"
           style={{ background: review.accentColor, color: review.textColor }}
         >
           {review.initials}
@@ -120,7 +120,7 @@ export default function FieldReports() {
       style={{ background: "#2D5BFF" }}
     >
       <h2
-        className="font-black text-[clamp(28px,4vw,44px)] tracking-[0.1em] uppercase
+        className="font-black text-[clamp(28px,4vw,44px)] tracking-widest uppercase
                    text-white text-center mb-12"
         style={{ background: "transparent" }}
       >
@@ -128,8 +128,8 @@ export default function FieldReports() {
       </h2>
 
       <div
-        className="grid grid-cols-3 gap-6 max-w-[1200px] mx-auto
-                   max-md:grid-cols-1 max-md:max-w-[520px]"
+        className="grid grid-cols-3 gap-6 max-w-300 mx-auto
+                   max-md:grid-cols-1 max-md:max-w-130"
         style={{ background: "transparent" }}
       >
         {REVIEWS.map((review, i) => (

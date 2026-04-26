@@ -1,30 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
 import { useAuth } from '@clerk/clerk-react'
+import { useHabitStore } from '../../store/useHabitStore'
 
-const API = import.meta.env.VITE_API_URL
-
-interface AddHabitProps {
-  refresh: () => void
-}
-
-const AddHabit = ({ refresh }: AddHabitProps) => {
+const AddHabit = () => {
   const [title, setTitle] = useState('')
   const { getToken } = useAuth()
+  const addHabit = useHabitStore((state) => state.addHabit)
 
   const handleAdd = async () => {
     if (!title) return
-    const token = await getToken()
-    await fetch(`${API}/api/habits`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ title }),
-    })
+    await addHabit(title, getToken)
     setTitle('')
-    refresh()
   }
 
   return (

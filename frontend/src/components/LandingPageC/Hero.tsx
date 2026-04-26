@@ -18,7 +18,7 @@ const Hero = () => {
         </div>
 
         <div
-          className="flex flex-col items-center font-black leading-[1.0] text-[#0a0a0a] mt-1"
+          className="flex flex-col items-center font-black leading-none text-[#0a0a0a] mt-1"
           style={{ fontSize: 'clamp(38px, 10vw, 100px)' }}
         >
           <div>BUILD</div>
@@ -28,7 +28,7 @@ const Hero = () => {
 
         <p
           className="font-bold text-[#5c6370] mt-2 leading-loose tracking-wide
-                     max-w-[320px] md:max-w-[480px]"
+                     max-w-[320px] md:max-w-120"
           style={{ fontSize: 'clamp(11px, 2vw, 14px)' }}
         >
           MODULAR HABIT TRACKING SYSTEM DESIGNED FOR ARCHITECTURAL PRECISION AND ABSOLUTE DISCIPLINE.
@@ -41,7 +41,7 @@ const Hero = () => {
                          px-8 py-3.5 w-full md:w-auto
                          text-center text-sm cursor-pointer text-[#F8F8F8]
                          shadow-[5px_5px_0_0_#0a0a0a]
-                         transition-[transform,box-shadow] duration-[420ms] ease-out
+                         transition-[transform,box-shadow] duration-420 ease-out
                          hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_#0a0a0a]"
               style={{ background: '#2D5BFF' }}
             >
@@ -54,7 +54,7 @@ const Hero = () => {
                          px-8 py-3.5 w-full md:w-auto
                          text-center text-sm cursor-pointer text-[#0a0a0a]
                          shadow-[5px_5px_0_0_#0a0a0a]
-                         transition-[transform,box-shadow] duration-[420ms] ease-out
+                         transition-[transform,box-shadow] duration-420 ease-out
                          hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_#0a0a0a]"
               style={{ background: '#F8F8F8' }}
             >

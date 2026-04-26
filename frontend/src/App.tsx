@@ -1,6 +1,7 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from '@clerk/clerk-react'
+import { Toaster } from 'react-hot-toast'
 import LandingPage from './pages/LandingPage'
 import Signin from './pages/Signin'
 import Dashboard from './pages/Dashboard'
@@ -34,29 +35,30 @@ const ProtectedRoute = ({ children } : { children: React.ReactNode}) => {
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/sign-in" element={<Signin />} />
+    <>
+      <Toaster position="top-center" reverseOrder={false} />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/sign-in" element={<Signin />} />
 
-      <Route
-        path="/dashboard"
-        element={
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/profile"
-        element={
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
-        }
-      />
-
-    </Routes>
-    
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </>
   )
 }
 

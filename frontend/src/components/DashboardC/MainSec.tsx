@@ -1,16 +1,9 @@
 import React from 'react'
+import { useHabitStore } from '../../store/useHabitStore'
 
-interface Habit {
-  _id: string
-  title: string
-  completedToday: boolean
-}
+const MainSec = () => {
+  const habits = useHabitStore((state) => state.habits)
 
-interface MainSecProps {
-  habits: Habit[]
-}
-
-const MainSec = ({ habits }: MainSecProps) => {
   const totalHabits = habits?.length || 0
   const completedHabits = habits?.filter(h => h.completedToday).length || 0
   const progressPercent = totalHabits > 0 ? Math.round((completedHabits / totalHabits) * 100) : 0
