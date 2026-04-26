@@ -1,47 +1,100 @@
-*{
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: var(--neutral);
-  scroll-behavior: smooth;
-}
+@import "tailwindcss";
 
-a{
-  text-decoration: none;
-  color: inherit;
-}
-:root {
-  --yellow: #fde047;
-   --yellow-glow: #fff6a3;
-  --cyan: #2dd4bf;
-  --cyan-muted: #5eead4;
-  --pink: #fda4af;
-   --pink-deep: #fb7185;
+/* ── Global reset — inside @layer base so Tailwind utilities override it ── */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+  }
 
-  --black: #0a0a0a;
-  --white: #ffffff;
+  body {
+    background-color: #F8F8F8;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  :root {
+    --yellow: #fde047;
+    --yellow-glow: #fff6a3;
+    --cyan: #2dd4bf;
+    --cyan-muted: #5eead4;
+    --pink: #fda4af;
+    --pink-deep: #fb7185;
+
+    --black: #0a0a0a;
+    --white: #ffffff;
     --gray: #e8eaef;
 
-  --gray-mid: #e5e7eb;
-     --gray-text: #5c6370;
-  --border: 2.5px solid var(--black);
-   --shadow: 5px 5px 0 0 var(--black);
-  --shadow-lg: 8px 8px 0 0 var(--black);
+    --gray-mid: #e5e7eb;
+    --gray-text: #5c6370;
+    --border: 2.5px solid #0a0a0a;
+    --shadow: 5px 5px 0 0 #0a0a0a;
+    --shadow-lg: 8px 8px 0 0 #0a0a0a;
     --shadow-soft: 6px 6px 0 0 rgba(10, 10, 10, 0.12);
-  
-  --primary : #2D5BFF;
-  --secondary: #E0FF00;
-  --tertiary: #00F5A0;
-  --neutral: #F8F8F8;
 
-  --motion-duration: 0.42s;
+    --primary: #2D5BFF;
+    --secondary: #E0FF00;
+    --tertiary: #00F5A0;
+    --neutral: #F8F8F8;
+
+    --motion-duration: 0.42s;
     --motion-duration-fast: 0.22s;
-   --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
-  --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-
-  --font-display: 'Archivo Black', system-ui, sans-serif;
-  --font-body: 'Space Grotesk', system-ui, sans-serif;
-  
+    --font-display: 'Archivo Black', system-ui, sans-serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+  }
 }
 
+/* ── Keyframes (outside layers is fine — animations aren't affected) ── */
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  animation: ticker-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ticker { animation: none; }
+}
+
+@keyframes fr-reveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-card-reveal {
+  animation: fr-reveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes gear-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-gear {
+  animation: gear-spin 8s linear infinite;
+}
+.group:hover .animate-gear {
+  animation-duration: 3s;
+}
+
+@keyframes habit-fill {
+  0%   { transform: scale(0.8); background-color: transparent; }
+  100% { transform: scale(1);   background-color: #00F5A0; }
+}
+.animate-habit-done {
+  animation: habit-fill 0.4s ease forwards;
+}
