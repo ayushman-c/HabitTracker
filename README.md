@@ -1,93 +1,197 @@
 # Habit Tracker
 
 ## Overview
-A full stack habit tracking web application that allows users to create, track, and maintain habits with authentication and streak tracking.
 
----
+Habit Tracker is a full stack habit management application built with a React frontend and an Express backend. Users can register, authenticate using JWT, create and update habits, track daily completion, and view streak metrics.
 
-## Tech Stack
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e7e8fc9c-e97b-4f32-a890-229731362991" />
+
+## WakaTime
+
+<img width="1694" height="812" alt="image" src="https://github.com/user-attachments/assets/e11263fe-db50-4263-9db4-782b0750f2a1" />
+
+## Technology Stack
 
 ### Frontend
-- React (Vite)
-- Clerk (Authentication)
+- React
+- Vite
+- TypeScript
+- Tailwind CSS
+- React Router DOM
+- Zustand
+- React Hot Toast
 
 ### Backend
 - Node.js
-- Express.js
-- MongoDB (Mongoose)
-- Clerk (JWT verification)
-
----
+- Express
+- MongoDB with Mongoose
+- JSON Web Tokens (`jsonwebtoken`)
+- Bcrypt for password hashing
+- Zod for request validation
+- CORS
+- dotenv
 
 ## Features
-- Google authentication (Clerk)
-- Create and manage habits
-- Daily habit tracking
-- Streak calculation
-- Protected API routes
 
----
+- User registration and login with JWT authentication
+- Protected habit management API routes
+- Create new habits
+- Toggle habit completion for the current day
+- View habit streaks and statistics
+- MongoDB persistence for habits, logs, and users
 
 ## Project Structure
 
-frontend/  
-backend/
-
----
+```
+Habit Tracker/
+├── backend/
+│   ├── config/
+│   │   └── db.js
+│   ├── controllers/
+│   │   └── habitController.js
+│   ├── middleware/
+│   │   ├── authMiddleware.js
+│   │   ├── errorHandler.js
+│   │   └── validateResource.js
+│   ├── models/
+│   │   ├── Habit.js
+│   │   ├── HabitLog.js
+│   │   └── User.js
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   └── habitRoutes.js
+│   ├── validations/
+│   │   └── habitValidation.js
+│   └── server.js
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── App.tsx
+│   │   ├── main.tsx
+│   │   ├── index.css
+│   │   ├── vite-env.d.ts
+│   │   ├── assets/
+│   │   ├── components/
+│   │   │   ├── DashboardC/
+│   │   │   ├── LandingPageC/
+│   │   │   ├── ProfileC/
+│   │   │   └── SigninC/
+│   │   ├── pages/
+│   │   ├── store/
+│   │   │   └── useHabitStore.ts
+│   │   └── utils/
+│   │       └── auth.ts
+│   ├── package.json
+│   ├── tsconfig.json
+│   ├── vite.config.js
+│   └── eslint.config.js
+└── README.md
+```
 
 ## Setup
 
 ### Backend
 
-cd backend  
-npm install  
+1. Navigate to the backend folder:
 
-Create a `.env` file:
+```bash
+cd backend
+```
 
-MONGO_URI=your_mongodb_uri  
-CLERK_SECRET_KEY=your_secret_key  
-PORT=5000  
+2. Install dependencies:
 
-Run server:
+```bash
+npm install
+```
 
-npm run dev  
+3. Create a `.env` file with the following values:
 
----
+```env
+MONGO_URI=<your_mongodb_connection_string>
+JWT_SECRET=<your_jwt_secret>
+PORT=5000
+```
+
+4. Start the backend server:
+
+```bash
+npm run dev
+```
+
+The backend should be available at `http://localhost:5000`.
 
 ### Frontend
 
-cd frontend  
-npm install  
+1. Navigate to the frontend folder:
 
-Create a `.env` file:
+```bash
+cd frontend
+```
 
-VITE_CLERK_PUBLISHABLE_KEY=your_key  
-VITE_API_URL=http://localhost:5000  
+2. Install dependencies:
 
-Run frontend:
+```bash
+npm install
+```
 
-npm run dev  
+3. Create a `.env` file with the API URL:
 
----
+```env
+VITE_API_URL=http://localhost:5000
+```
 
-## API
+4. Start the frontend development server:
 
-GET    /api/habits  
-POST   /api/habits  
-POST   /api/habits/:id/toggle  
+```bash
+npm run dev
+```
 
-Headers:
+The frontend should run on Vite’s default port, typically `http://localhost:5173`.
 
-Authorization: Bearer <token>  
+## API Endpoints
 
----
+### Authentication
 
-## Deployment
+- `POST /api/auth/register`
+  - Request body: `{ "email": "...", "password": "...", "name": "..." }`
+  - Response: `token` and `user`
 
-Backend: Render / Railway  
-Frontend: Vercel  
+- `POST /api/auth/login`
+  - Request body: `{ "email": "...", "password": "..." }`
+  - Response: `token` and `user`
 
----
+### Habits
+
+- `GET /api/habits`
+- `GET /api/habits/stats`
+- `POST /api/habits`
+  - Request body: `{ "title": "..." }`
+- `POST /api/habits/:id/toggle`
+
+### Headers
+
+All protected habit requests require:
+
+```http
+Authorization: Bearer <token>
+Content-Type: application/json
+```
+
+## Testing with Postman
+
+1. Register a new user with `POST /api/auth/register`.
+2. Save the returned `token` from the response.
+3. Use `POST /api/auth/login` to verify the account.
+4. Add the `Authorization` header to habit requests with the Bearer token.
+5. Call the protected habit endpoints to confirm the backend accepts the JWT.
+
+## Notes
+
+- The backend uses JWT to authenticate requests and attaches `req.auth.userId` to protected routes.
+- Passwords are hashed with bcrypt before they are stored in MongoDB.
+- The frontend stores the token in `localStorage` and sends it on every protected API request.
 
 ## License
-MIT
+
+This project is provided under the MIT License.
+
