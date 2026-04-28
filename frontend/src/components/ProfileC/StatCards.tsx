@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { useAuth } from '@clerk/clerk-react'
 import { useHabitStore } from '../../store/useHabitStore'
 
 const CheckCircleIcon = () => (
@@ -112,8 +111,6 @@ const StatCard = ({ variant, label, value, suffix, icon }: StatCardProps) => {
 }
 
 const StatCards = () => {
-  const { getToken } = useAuth()
-  
   const habits = useHabitStore((state) => state.habits)
   const stats = useHabitStore((state) => state.stats)
   const fetchHabits = useHabitStore((state) => state.fetchHabits)
@@ -121,9 +118,9 @@ const StatCards = () => {
   const isLoading = useHabitStore((state) => state.isLoading)
 
   useEffect(() => {
-    fetchHabits(getToken)
-    fetchStats(getToken)
-  }, [fetchHabits, fetchStats, getToken])
+    fetchHabits()
+    fetchStats()
+  }, [fetchHabits, fetchStats])
 
   const totalHabits = habits.length
   const longestStreak = stats.personalRecord || 0

@@ -1,10 +1,12 @@
 import React from 'react'
-import { useUser } from '@clerk/clerk-react'
 import { useHabitStore } from '../../store/useHabitStore'
+import { decodeJwt, getToken } from '../../utils/auth'
 
 const StreakCount = () => {
-  const { user } = useUser()
   const stats = useHabitStore((state) => state.stats)
+  const token = getToken()
+  const payload = decodeJwt<{ name?: string }>(token)
+  const firstName = payload?.name?.split(' ')[0] || 'Friend'
 
   return (
     <div
@@ -26,7 +28,7 @@ const StreakCount = () => {
                      max-md:text-lg max-md:pt-1.5"
           style={{ background: 'transparent' }}
         >
-          {user?.firstName}
+          {firstName}
         </div>
       </div>
 
