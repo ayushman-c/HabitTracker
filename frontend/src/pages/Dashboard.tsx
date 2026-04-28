@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { useAuth, useUser } from '@clerk/clerk-react'
 import Dnavbar from '../components/DashboardC/Dnavbar'
 import MainSec from '../components/DashboardC/MainSec'
 import AddHabit from '../components/DashboardC/AddHabit'
@@ -9,16 +8,13 @@ import StreakCount from '../components/DashboardC/StreakCount'
 import { useHabitStore } from '../store/useHabitStore'
 
 const Dashboard = () => {
-  const { getToken } = useAuth()
-  const { user } = useUser()
-
   const fetchHabits = useHabitStore((state) => state.fetchHabits)
   const fetchStats = useHabitStore((state) => state.fetchStats)
 
   useEffect(() => {
-    fetchHabits(getToken)
-    fetchStats(getToken)
-  }, [fetchHabits, fetchStats, getToken])
+    fetchHabits()
+    fetchStats()
+  }, [fetchHabits, fetchStats])
 
   return (
     <>

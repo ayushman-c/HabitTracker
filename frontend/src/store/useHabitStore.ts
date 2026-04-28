@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import toast from 'react-hot-toast';
+import { getToken } from '../utils/auth';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -17,17 +18,15 @@ interface Stats {
   personalRecord: number;
 }
 
-type GetToken = () => Promise<string | null>;
-
 interface HabitStore {
   habits: Habit[];
   stats: Stats;
   isLoading: boolean;
   
-  fetchHabits: (getToken: GetToken) => Promise<void>;
-  fetchStats: (getToken: GetToken) => Promise<void>;
-  addHabit: (title: string, getToken: GetToken) => Promise<void>;
-  toggleHabit: (habitId: string, getToken: GetToken) => Promise<void>;
+  fetchHabits: () => Promise<void>;
+  fetchStats: () => Promise<void>;
+  addHabit: (title: string) => Promise<void>;
+  toggleHabit: (habitId: string) => Promise<void>;
 }
 
 const handleApiError = async (res: Response, defaultMsg: string) => {
@@ -41,18 +40,27 @@ const handleApiError = async (res: Response, defaultMsg: string) => {
   }
 };
 
+const getAuthHeaders = () => {
+  const token = getToken();
+  return token ? { Authorization: `Bearer ${token}` } : undefined;
+};
+
 export const useHabitStore = create<HabitStore>((set, get) => ({
   habits: [],
   stats: { currentMomentum: 0, personalRecord: 0 },
   isLoading: false,
 
-  fetchHabits: async (getToken) => {
+  fetchHabits: async () => {
     set({ isLoading: true });
     try {
-      const token = await getToken();
-      if (!token) return;
+      const headers = getAuthHeaders();
+      if (!headers) {
+        toast.error('Authentication required');
+        return;
+      }
+
       const res = await fetch(`${API}/api/habits`, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers,
       });
       await handleApiError(res, "Failed to fetch habits");
       const data = await res.json();
@@ -64,12 +72,16 @@ export const useHabitStore = create<HabitStore>((set, get) => ({
     }
   },
 
-  fetchStats: async (getToken) => {
+  fetchStats: async () => {
     try {
-      const token = await getToken();
-      if (!token) return;
+      const headers = getAuthHeaders();
+      if (!headers) {
+        toast.error('Authentication required');
+        return;
+      }
+
       const res = await fetch(`${API}/api/habits/stats`, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers,
       });
       await handleApiError(res, "Failed to fetch stats");
       const data = await res.json();
@@ -79,38 +91,46 @@ export const useHabitStore = create<HabitStore>((set, get) => ({
     }
   },
 
-  addHabit: async (title, getToken) => {
+  addHabit: async (title) => {
     try {
-      const token = await getToken();
-      if (!token) return;
+      const headers = getAuthHeaders();
+      if (!headers) {
+        toast.error('Authentication required');
+        return;
+      }
+
       const res = await fetch(`${API}/api/habits`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          ...headers,
         },
         body: JSON.stringify({ title }),
       });
       await handleApiError(res, "Failed to add habit");
-      await get().fetchHabits(getToken);
-      await get().fetchStats(getToken);
+      await get().fetchHabits();
+      await get().fetchStats();
       toast.success("Habit created!");
     } catch (error: any) {
       toast.error(error.message);
     }
   },
 
-  toggleHabit: async (habitId, getToken) => {
+  toggleHabit: async (habitId) => {
     try {
-      const token = await getToken();
-      if (!token) return;
+      const headers = getAuthHeaders();
+      if (!headers) {
+        toast.error('Authentication required');
+        return;
+      }
+
       const res = await fetch(`${API}/api/habits/${habitId}/toggle`, {
         method: 'POST',
-        headers: { Authorization: `Bearer ${token}` },
+        headers,
       });
       await handleApiError(res, "Failed to toggle habit");
-      await get().fetchHabits(getToken);
-      await get().fetchStats(getToken);
+      await get().fetchHabits();
+      await get().fetchStats();
     } catch (error: any) {
       toast.error(error.message);
     }

@@ -1,14 +1,12 @@
 import React from 'react'
-import { useAuth } from '@clerk/clerk-react'
 import { useHabitStore } from '../../store/useHabitStore'
 
 const HabitCard = () => {
-  const { getToken } = useAuth()
   const habits = useHabitStore((state) => state.habits)
   const toggleHabit = useHabitStore((state) => state.toggleHabit)
 
   const handleToggle = async (habitId: string) => {
-    await toggleHabit(habitId, getToken)
+    await toggleHabit(habitId)
   }
 
   return (

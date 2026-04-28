@@ -3,6 +3,7 @@ import cors from "cors"
 import express from "express"
 import connectDB from "./config/db.js"
 import habitRoutes from "./routes/habitRoutes.js"
+import authRoutes from "./routes/authRoutes.js"
 
 dotenv.config()
 connectDB()
@@ -10,12 +11,13 @@ connectDB()
 const app = express();
 
 app.use(cors({
-  origin: 'https://habit-tracker-plum-chi.vercel.app',
+  origin: 'http://localhost:5173',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 app.use(express.json());
+app.use("/api/auth", authRoutes);
 app.use("/api/habits", habitRoutes);
 
 app.get("/", (req,res) => {

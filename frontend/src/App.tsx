@@ -1,32 +1,16 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { useAuth } from '@clerk/clerk-react'
 import { Toaster } from 'react-hot-toast'
 import LandingPage from './pages/LandingPage'
 import Signin from './pages/Signin'
 import Dashboard from './pages/Dashboard'
 import Profile from './pages/Profile'
+import { getToken } from './utils/auth'
 
 const ProtectedRoute = ({ children } : { children: React.ReactNode}) => {
-  const { isLoaded, isSignedIn } = useAuth()
+  const token = getToken()
 
-  if (!isLoaded) {
-    return (
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        height: '100vh',
-        background: '#0a0a0a',
-        color: '#fff',
-        fontFamily: 'system-ui'
-      }}>
-        Loading...
-      </div>
-    )
-  }
-
-  if (!isSignedIn) {
+  if (!token) {
     return <Navigate to="/sign-in" replace />
   }
 

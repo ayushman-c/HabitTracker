@@ -1,16 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
-import { useAuth } from '@clerk/clerk-react'
 import { useHabitStore } from '../../store/useHabitStore'
 
 const AddHabit = () => {
   const [title, setTitle] = useState('')
-  const { getToken } = useAuth()
   const addHabit = useHabitStore((state) => state.addHabit)
 
   const handleAdd = async () => {
     if (!title) return
-    await addHabit(title, getToken)
+    await addHabit(title)
     setTitle('')
   }
 
