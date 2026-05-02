@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import React from 'react'
 
 const Hero = () => {
@@ -7,23 +8,63 @@ const Hero = () => {
       style={{ background: '#F8F8F8', paddingTop: '60px' }}
     >
       <div className="flex flex-col items-center text-center gap-4 md:gap-5 py-12 md:py-20 w-full max-w-4xl">
-
-        <div
-          className="border-[2.5px] border-[#0a0a0a]
-                     px-4 py-1.5 md:px-5 md:py-2
-                     font-extrabold text-[10px] md:text-xs tracking-[0.2em] text-[#4a4a4a]"
-          style={{ background: '#E0FF00' }}
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.4 }}
+          className="inline-flex items-center gap-2 border-[2.5px] border-black
+             px-4 py-1.5 md:px-5 md:py-2
+             font-extrabold text-[10px] md:text-xs
+             tracking-[0.2em] text-gray-800 uppercase"
+          style={{ background: "#E0FF00" }}
         >
-          STATUS : UNSTOPABLE
-        </div>
 
+          <motion.div
+            className="w-2.5 h-2.5 rounded-full bg-blue-500"
+            animate={{
+              scale: [0.9],
+              opacity: [2, 0.6],
+            }}
+            transition={{
+              duration: 0.2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+
+          <span>STATUS : UNSTOPPABLE</span>
+        </motion.div>
         <div
           className="flex flex-col items-center font-black leading-none text-[#0a0a0a] mt-1"
           style={{ fontSize: 'clamp(38px, 10vw, 100px)' }}
         >
-          <div>BUILD</div>
-          <div style={{ color: '#2D5BFF' }}>UNSTOPPABLE</div>
-          <div>MOMENTUM</div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="font-black leading-none text-[#0a0a0a]"
+          >
+            BUILD
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="font-black leading-none text-[#2D5BFF]"
+          >
+            UNSTOPPABLE
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="font-black leading-none text-[#0a0a0a]"
+          >
+            MOMENTUM
+          </motion.div>
         </div>
 
         <p
