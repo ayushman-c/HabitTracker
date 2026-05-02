@@ -32,7 +32,7 @@ export const getHabits = async (req, res) => {
         ...habit.toObject(),
         completedToday: !!log,
       };
-    })
+    }),
   );
 
   res.json(habitsWithStatus);
@@ -43,7 +43,11 @@ const calculateStreak = async (habitId) => {
   let checkDate = new Date();
 
   let todayStr = checkDate.toISOString().split("T")[0];
-  let log = await HabitLog.findOne({ habitId, date: todayStr, completed: true });
+  let log = await HabitLog.findOne({
+    habitId,
+    date: todayStr,
+    completed: true,
+  });
 
   if (log) {
     while (log) {
@@ -69,11 +73,18 @@ const calculateStreak = async (habitId) => {
 export const toggleHabit = async (req, res) => {
   const userId = req.auth.userId;
   const { id } = req.params;
+  const habit = await Habit.findOne({ _id: id, userId });
+
+  if (!habit) {
+    res.status(404);
+    throw new Error("Habit not found");
+  }
 
   const today = new Date().toISOString().split("T")[0];
 
   let log = await HabitLog.findOne({
-    habitId: id,
+    habitId: habit._id,
+    userId,
     date: today,
   });
 
@@ -83,7 +94,7 @@ export const toggleHabit = async (req, res) => {
   } else {
     try {
       log = await HabitLog.create({
-        habitId: id,
+        habitId: habit._id,
         userId,
         date: today,
         completed: true,
@@ -97,15 +108,18 @@ export const toggleHabit = async (req, res) => {
     }
   }
 
-  const newStreak = await calculateStreak(id);
-  await Habit.findByIdAndUpdate(id, { streak: newStreak });
+  const newStreak = await calculateStreak(habit._id);
+  habit.streak = newStreak;
+  await habit.save();
 
   res.json({ ...log.toObject(), streak: newStreak });
 };
 
 export const getUserStats = async (req, res) => {
   const userId = req.auth.userId;
-  const logs = await HabitLog.find({ userId, completed: true }).sort({ date: -1 });
+  const logs = await HabitLog.find({ userId, completed: true }).sort({
+    date: -1,
+  });
 
   if (logs.length === 0) {
     return res.json({ currentMomentum: 0, personalRecord: 0 });
@@ -127,7 +141,9 @@ export const getUserStats = async (req, res) => {
     if (i < uniqueDates.length - 1) {
       const currentDate = new Date(uniqueDates[i]);
       const nextDate = new Date(uniqueDates[i + 1]);
-      const diffInDays = Math.round((currentDate - nextDate) / (1000 * 60 * 60 * 24));
+      const diffInDays = Math.round(
+        (currentDate - nextDate) / (1000 * 60 * 60 * 24),
+      );
 
       if (diffInDays === 1) {
       } else {
