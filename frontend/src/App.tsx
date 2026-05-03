@@ -2,6 +2,7 @@ import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import LandingPage from './pages/LandingPage'
+import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import Dashboard from './pages/Dashboard'
 import Profile from './pages/Profile'
@@ -24,6 +25,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/sign-in" element={<Signin />} />
+        <Route path="/sign-up" element={<Signup />} />
 
         <Route
           path="/dashboard"

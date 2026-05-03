@@ -15,33 +15,34 @@ const INPUT_CLASS = `
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
-const Form = () => {
+const SignupForm = () => {
+  const [name, setName] = useState("")
   const [email, setEmail] = useState("")
-  const [accessKey, setAccessKey] = useState("")
+  const [password, setPassword] = useState("")
   const navigate = useNavigate()
 
-  const handleLogin = async () => {
-    if (!email || !accessKey) {
-      toast.error('Email and password are required')
+  const handleRegister = async () => {
+    if (!name || !email || !password) {
+      toast.error('Name, email, and password are required')
       return
     }
 
     try {
-      const res = await fetch(`${API}/api/auth/login`, {
+      const res = await fetch(`${API}/api/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password: accessKey }),
+        body: JSON.stringify({ name, email, password }),
       })
 
       const data = await res.json()
       if (!res.ok) {
-        throw new Error(data.error || 'Unable to login')
+        throw new Error(data.error || 'Unable to register')
       }
 
       setToken(data.token)
-      toast.success('Signed in successfully')
+      toast.success('Registered successfully')
       navigate('/dashboard')
     } catch (error: any) {
       toast.error(error.message)
@@ -63,14 +64,27 @@ const Form = () => {
 
           <div className="flex flex-col gap-1.5">
             <div className="text-[42px] font-black leading-none text-[#0a0a0a]">
-              SIGN IN
+              SIGN UP
             </div>
             <div className="text-base font-bold text-[#5c6370] tracking-wide">
-              DISCIPLINE STARTS HERE.
+              START YOUR GRIND TODAY.
             </div>
           </div>
 
           <div className="h-[2.5px] w-full bg-[#0a0a0a]" />
+
+          <div className="flex flex-col gap-2">
+            <label className="font-extrabold text-xs tracking-[0.18em] text-[#5c6370]">
+              FULL NAME
+            </label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="John Doe"
+              className={INPUT_CLASS}
+            />
+          </div>
 
           <div className="flex flex-col gap-2">
             <label className="font-extrabold text-xs tracking-[0.18em] text-[#5c6370]">
@@ -91,8 +105,8 @@ const Form = () => {
             </label>
             <input
               type="password"
-              value={accessKey}
-              onChange={(e) => setAccessKey(e.target.value)}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
               className={INPUT_CLASS}
             />
@@ -106,13 +120,13 @@ const Form = () => {
                        hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_#0a0a0a]
                        active:translate-x-0 active:translate-y-0 active:shadow-none"
             style={{ background: '#2D5BFF' }}
-            onClick={handleLogin}
+            onClick={handleRegister}
           >
-            SIGN IN
+            SIGN UP
           </div>
 
-          <Link to="/sign-up" className="text-center font-bold text-sm tracking-[0.15em] text-[#5c6370] mt-1 hover:text-[#0a0a0a] transition-colors">
-            JOIN THE GRIND
+          <Link to="/sign-in" className="text-center font-bold text-sm tracking-[0.15em] text-[#5c6370] mt-1 hover:text-[#0a0a0a] transition-colors">
+            ALREADY GRINDING? SIGN IN
           </Link>
 
         </div>
@@ -123,4 +137,4 @@ const Form = () => {
   )
 }
 
-export default Form
+export default SignupForm
