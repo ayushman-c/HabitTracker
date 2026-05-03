@@ -1,7 +1,10 @@
 import express from "express";
 import { requireAuth } from "../middleware/authMiddleware.js";
 import { validate } from "../middleware/validateResource.js";
-import { createHabitSchema } from "../validations/habitValidation.js";
+import {
+  createHabitSchema,
+  habitIdParamsSchema,
+} from "../validations/habitValidation.js";
 import {
   createHabit,
   getHabits,
@@ -14,6 +17,11 @@ const router = express.Router();
 router.post("/", requireAuth, validate(createHabitSchema), createHabit);
 router.get("/", requireAuth, getHabits);
 router.get("/stats", requireAuth, getUserStats);
-router.post("/:id/toggle", requireAuth, toggleHabit);
+router.post(
+  "/:id/toggle",
+  requireAuth,
+  validate(habitIdParamsSchema),
+  toggleHabit,
+);
 
 export default router;
